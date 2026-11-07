@@ -1,0 +1,28 @@
+sample_id,concept,question_type,response,expected_score,score_reason,case_type
+V1,Variables and data types,recall,"A variable is a name that refers to a value. For example, age = 12 uses an integer.",2,"Defines the name-value relationship and gives a valid type example.",strong
+V2,Variables and data types,recall,"A variable is something in Python.",1,"Recognizes the term but gives no useful definition or type example.",partial
+V3,Variables and data types,recall,"A variable is a command that repeats code.",0,"Confuses variables with loops and provides no valid type.",misconception
+V4,Variables and data types,explain,"score = 10 binds score to the integer 10. If I assign 'ten', the same name refers to a string instead, because the new assignment replaces the old value.",3,"Explains assignment, distinguishes types, and explains reassignment.",strong
+V5,Variables and data types,explain,"It changes score to ten.",1,"Notes a change but does not distinguish value type or explain assignment.",partial
+V6,Variables and data types,explain,"The number 10 and the word ten are both integers, so nothing changes.",0,"Incorrectly classifies the string and misses reassignment behavior.",misconception
+V7,Variables and data types,transfer,"The input is text, so I would convert it to an integer first. Then I can add 2 and get 23; text concatenation would behave differently.",4,"Recognizes text input, converts, explains the issue, and gives the outcome.",strong
+V8,Variables and data types,transfer,"Convert it first and then add 2.",2,"Suggests conversion and addition but gives little explanation or result.",partial
+V9,Variables and data types,transfer,"Just add 2 to the text and Python will know it means a number.",0,"Assumes text will automatically behave as a numeric value.",misconception
+C1,Conditionals,recall,"An if checks a condition and runs a block when it is true. Else gives the alternative branch.",2,"Correctly explains purpose and names a valid alternative keyword.",strong
+C2,Conditionals,recall,"If is used to make a decision.",1,"Partially describes purpose but gives no alternative keyword.",partial
+C3,Conditionals,recall,"An if repeats a block many times.",0,"Confuses conditionals with loops.",misconception
+C4,Conditionals,explain,"age >= 18 checks whether age is at least 18. If true, the if block runs, including at 18; otherwise the else block runs below 18.",3,"Interprets comparison and correctly describes both outcomes and boundary.",strong
+C5,Conditionals,explain,"If age is bigger, it runs one block; otherwise another.",1,"Understands there are branches but omits the threshold and equality case.",partial
+C6,Conditionals,explain,"At age 18 the condition is false because it means older than 18.",0,"Misreads >= as strictly greater than and gives the wrong result at 18.",misconception
+C7,Conditionals,transfer,"Use if age < 6 for free; else if age >= 65 for the discount; otherwise full price. So 6 is full price and 65 is discounted.",4,"Correctly gives both conditions, default case, and boundary outcomes.",strong
+C8,Conditionals,transfer,"Use an if for children under 6 and else for everyone else.",1,"Handles free entry but misses the senior discount condition.",partial
+C9,Conditionals,transfer,"Use age <= 6 for free and age > 65 for the discount.",1,"Both boundary comparisons are wrong for ages 6 and 65.",misconception
+L1,Loops,recall,"The two common loops are for and while. They repeat a block of code.",2,"Names both loop statements and describes repetition.",strong
+L2,Loops,recall,"A for loop repeats code.",1,"Gives a correct partial purpose but misses while.",partial
+L3,Loops,recall,"The two loop statements are if and else.",0,"Confuses conditionals with loop statements.",misconception
+L4,Loops,explain,"A for loop can visit each list item one at a time. A while loop repeats while a condition is true, useful when I do not know the number of repetitions in advance.",3,"Explains item iteration, condition control, and an appropriate use case.",strong
+L5,Loops,explain,"A for loop goes through a list.",1,"Partially describes for iteration but does not compare while.",partial
+L6,Loops,explain,"A while loop always runs exactly once for every item in a list.",0,"Incorrectly describes while-loop behavior.",misconception
+L7,Loops,transfer,"Use a while loop while the reading is not STOP. Get a new sensor reading each iteration; when STOP arrives the condition is false and the loop ends.",4,"Chooses condition-controlled repetition, checks STOP, updates input, and explains termination.",strong
+L8,Loops,transfer,"Use a while loop until STOP.",1,"Names a plausible loop and stop value but omits how readings update and how it exits.",partial
+L9,Loops,transfer,"Use a for loop that repeats forever and keep checking the same first reading.",0,"Does not update input or define a terminating condition.",misconception

@@ -15,7 +15,7 @@
 
 ConceptLens is a HackCartel education research prototype that explores the difference between recalling an answer and applying a concept. It uses varied questions and evidence-based feedback to help students and teachers identify conceptual gaps.
 
-**Status:** Initial project documentation. Application code, model implementation, and deployment are not included yet. Features below describe the planned prototype.
+**Status:** Working research prototype. The app provides topic selection, three question types, Gemini-assisted rubric evaluation, evidence-linked feedback, possible conceptual gaps, and local SQLite history.
 
 ## Problem statement
 
@@ -48,18 +48,35 @@ Replace the member labels with names and GitHub handles once responsibilities ar
 | Member 1 | Frontend and experience | Topic selection, question screens, and feedback views. |
 | Member 2 | Backend and APIs | Assessment sessions, answer submission, and report endpoints. |
 | Member 3 | Question and rubric design | Three concepts, reference answers, scoring criteria, and transfer questions. |
-| Member 4 | Evaluation logic | Transparent scoring, optional AI-assisted evaluation, and evidence extraction. |
+| Member 4 | Evaluation logic | Gemini-assisted rubric scoring, evidence extraction, and uncertainty flagging. |
 | Member 5 | Integration and quality | End-to-end checks, sample responses, documentation, and demonstration. |
 
-## Proposed technical direction
+## Current technical implementation
 
 - **UI:** Streamlit for the first working demonstration.
 - **Logic:** Python modules with clear inputs and outputs.
 - **Data:** SQLite for prototype persistence; JSON or CSV for authored sample records.
-- **Evaluation:** Transparent rules first; add ML or LLM assistance only with a defined evaluation method.
+- **Evaluation:** Gemini API through the Google GenAI Python SDK with structured JSON output. Scores are estimates and should be reviewed against independently scored examples.
 - **Optional later architecture:** React frontend and FastAPI backend if the team needs separate services.
 
-These are proposed choices, not installed dependencies. Record the final stack before adding application setup commands.
+## Run locally
+
+Requires Python 3.10 or newer, a Gemini API key, and internet access.
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate       # Windows: .venv\\Scripts\\activate
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Create `.streamlit/secrets.toml` locally (this file is ignored by Git) and add:
+
+```toml
+GEMINI_API_KEY = "your-key-here"
+```
+
+Never commit API keys or real student data. Gemini API usage is subject to the account's current limits and billing terms.
 
 ## Data plan
 
@@ -96,7 +113,7 @@ The system estimates understanding from observable responses; it cannot prove a 
 | `GITHUB_SETUP.md` | Windows PowerShell instructions for the first upload |
 | `.gitignore` | Excludes credentials, local environments, and generated files |
 
-There is no runnable application yet. Add installation and run instructions when the first implementation is merged.
+`app.py` is the Streamlit interface and local SQLite workflow. `evaluator.py` calls Gemini. `questions2.csv` contains questions, scoring criteria, reference answers, and feedback guidance. `sample_responses.csv` contains synthetic examples for evaluation checks; it is not real student data.
 
 ## Contributing
 
